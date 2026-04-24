@@ -1,3 +1,5 @@
+import React from 'react';
+
 function ProfileCard({ user }) {
   return (
     <section className="card profile-card">

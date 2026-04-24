@@ -1,3 +1,5 @@
+import React from 'react';
+
 function RecommendationList({ items }) {
   return (
     <section className="card recommendations-card">
