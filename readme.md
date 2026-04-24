@@ -1,4 +1,3 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
 diff --git a/README.md b/README.md
 new file mode 100644
 index 0000000000000000000000000000000000000000..172b427e7b4b3662abd3af3e13b42604ed2c0a50
@@ -141,6 +140,3 @@ index 0000000000000000000000000000000000000000..172b427e7b4b3662abd3af3e13b42604
 +## Next Step
 +
 +After README approval, we can scaffold the initial monorepo structure and start Phase 1 implementation.
- 
-EOF
-)
