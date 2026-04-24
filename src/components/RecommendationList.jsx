@@ -1,20 +1,37 @@
 function RecommendationList({ items }) {
   return (
-    <section className="card">
-      <h2>AI Recommendations + Best Deals</h2>
+    <section className="card recommendations-card">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">Personalized Feed</p>
+          <h2>AI recommendations and best deals</h2>
+        </div>
+      </div>
+
       <ul className="recommendation-list">
         {items.map((item) => {
           const totalCost = item.bestOffer.price + item.bestOffer.shipping;
 
           return (
             <li key={item.id} className="recommendation-item">
+              <div className="recommendation-topline">
+                <span className="match-pill">{item.styleMatch}% match</span>
+                <span className="store-pill">{item.bestOffer.store}</span>
+              </div>
+
               <h3>{item.name}</h3>
-              <p><strong>Style Match:</strong> {item.styleMatch}%</p>
-              <p><strong>Why this item:</strong> {item.reason}</p>
-              <p>
-                <strong>Best Deal:</strong> {item.bestOffer.store} — ${item.bestOffer.price}
-                {' '}+ ${item.bestOffer.shipping} shipping (Total: ${totalCost})
-              </p>
+              <p className="recommendation-reason">{item.reason}</p>
+
+              <div className="deal-row">
+                <div>
+                  <p className="deal-label">Best available total</p>
+                  <strong className="deal-total">${totalCost}</strong>
+                </div>
+
+                <p className="deal-breakdown">
+                  ${item.bestOffer.price} item + ${item.bestOffer.shipping} shipping
+                </p>
+              </div>
             </li>
           );
         })}
