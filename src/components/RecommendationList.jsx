@@ -1,6 +1,23 @@
 import React from 'react';
 
 function RecommendationList({ items }) {
+  if (!items?.length) {
+    return (
+      <section className="card recommendations-card">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Personalized Feed</p>
+            <h2>AI recommendations and best deals</h2>
+          </div>
+        </div>
+
+        <p className="section-copy">
+          Sign in successfully and Stylish will load your personalized recommendations here.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="card recommendations-card">
       <div className="section-heading">
@@ -23,6 +40,7 @@ function RecommendationList({ items }) {
 
               <h3>{item.name}</h3>
               <p className="recommendation-reason">{item.reason}</p>
+              {item.signal ? <p className="recommendation-signal">{item.signal}</p> : null}
 
               <div className="deal-row">
                 <div>

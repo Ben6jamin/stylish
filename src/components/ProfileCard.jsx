@@ -1,6 +1,17 @@
 import React from 'react';
 
+const providerLabels = {
+  email: 'Email',
+  google: 'Google',
+  instagram: 'Instagram',
+  facebook: 'Facebook'
+};
+
 function ProfileCard({ user }) {
+  if (!user) {
+    return null;
+  }
+
   return (
     <section className="card profile-card">
       <div className="section-heading">
@@ -42,6 +53,19 @@ function ProfileCard({ user }) {
           ))}
         </div>
       </div>
+
+      {user.connectedProviders?.length ? (
+        <div className="taste-stack">
+          <p className="profile-label">Connected sources</p>
+          <div className="profile-chip-group">
+            {user.connectedProviders.map((provider) => (
+              <span key={provider} className="profile-chip source-chip">
+                {providerLabels[provider] || provider}
+              </span>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
